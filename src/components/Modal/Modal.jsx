@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Modal extends Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown);
