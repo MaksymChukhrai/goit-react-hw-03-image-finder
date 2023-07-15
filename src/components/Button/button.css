@@ -1,0 +1,17 @@
+.load-button{
+    width: 210px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #e19829;
+    border: none;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color .3s;
+    display: block;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2), 5px 5px 10px rgba(0,0,0,.4);
+}
+

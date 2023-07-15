@@ -1,0 +1,33 @@
+.searchbar{
+    height: 80px;
+    width: 100%;
+    z-index: 999;
+    background-color: #0a6f6f;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.search-form{
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.search-button{
+    margin-right: 10px;
+    width: 130px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgb(235, 214, 96);
+    cursor: pointer;
+ 
+}
+.input{
+    height: 24px;
+    width: 250px;
+    border-radius: 10px;
+}

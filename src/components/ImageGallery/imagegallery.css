@@ -1,0 +1,9 @@
+.gallery {
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    margin-top: 100px;
+    display: grid;
+    margin-left: 15px;
+    padding-left: 0;
+    margin-right: 15px;
+}

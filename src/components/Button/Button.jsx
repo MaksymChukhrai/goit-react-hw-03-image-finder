@@ -11,7 +11,7 @@ const Button = ({ onClick, hasImages }) => {
     }
   
     return (
-      <button className="button" onClick={handleClick}>
+      <button className="load-button" onClick={handleClick}>
         Load more
       </button>
     );
