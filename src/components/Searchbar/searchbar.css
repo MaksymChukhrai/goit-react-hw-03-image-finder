@@ -22,8 +22,11 @@
     width: 130px;
     height: 30px;
     border-radius: 10px;
-    background-color: rgb(235, 214, 96);
+    background-color: #e19829;
     cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2), 5px 5px 10px rgba(0,0,0,.4);
  
 }
 .input{

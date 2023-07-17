@@ -5,11 +5,11 @@ class Searchbar extends React.Component {
     value: '',
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({ value: event.target.value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     const { onSubmit } = this.props;
     const { value } = this.state;

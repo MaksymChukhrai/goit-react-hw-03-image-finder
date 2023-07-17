@@ -1,12 +1,8 @@
 import React from 'react';
-import * as basicLightbox from 'basiclightbox';
 
-const ImageGalleryItem = ({ image }) => {
+const ImageGalleryItem = ({ image, onClick }) => {
   const handleImageClick = () => {
-    const instance = basicLightbox.create(`
-      <img src="${image.largeImageURL}" width="1400" height="900">
-    `);
-    instance.show();
+    onClick(image.largeImageURL);
   };
 
   return (
@@ -22,4 +18,3 @@ const ImageGalleryItem = ({ image }) => {
 };
 
 export default ImageGalleryItem;
-
