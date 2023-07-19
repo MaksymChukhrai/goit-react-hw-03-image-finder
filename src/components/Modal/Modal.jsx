@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 
 class Modal extends Component {
   componentDidMount() {
-    // Добавляем обработчик события на элемент window при монтировании компонента
-    window.addEventListener('keydown', this.handleKeyDown);
+       window.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
-    // Удаляем обработчик события при размонтировании компонента
-    window.removeEventListener('keydown', this.handleKeyDown);
+      window.removeEventListener('keydown', this.handleKeyDown);
   }
 
   handleOverlayClick = (event) => {
@@ -24,10 +22,9 @@ class Modal extends Component {
   };
 
   render() {
-    const { imageUrl, onClose } = this.props; // Добавляем деструктуризацию для получения свойства onClose
-
+    const { imageUrl, onClose } = this.props; 
     return (
-      <div className="overlay" onClick={this.handleOverlayClick}> {/* Исправляем на this.handleOverlayClick */}
+      <div className="overlay" onClick={this.handleOverlayClick}> 
         <div className="modal">
           <button className="close-button" onClick={onClose}>
             &times;

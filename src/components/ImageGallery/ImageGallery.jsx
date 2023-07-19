@@ -5,7 +5,7 @@ const ImageGallery = ({ images, onImageClick, onLoadMore }) => {
   return (
     <div>
       <ul className="gallery">
-        {images.map(image => (
+        {images.length > 0 && images.map(image => (
           <ImageGalleryItem
             key={image.id}
             image={image}
@@ -18,3 +18,5 @@ const ImageGallery = ({ images, onImageClick, onLoadMore }) => {
 };
 
 export default ImageGallery;
+
+

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import {fetchGallery} from '../services/api'
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
 import Modal from './Modal/Modal';
 
-const API_KEY = '36686199-3af1daf12518f9079ef45ad7e';
-const PER_PAGE = 12;
+
 
 class App extends Component {
   state = {
@@ -21,7 +20,17 @@ class App extends Component {
     selectedImage: null,
   };
 
-  handleSearchSubmit = query => {
+  componentDidMount() {
+     this.fetchImages();
+  }
+
+  componentDidUpdate(_, prevState) {
+        if (prevState.searchQuery !== this.state.searchQuery || prevState.page !== this.state.page) {
+      this.fetchImages();
+    };
+  };
+
+  handleSearchSubmit = (query) => {
     this.setState(
       { images: [], searchQuery: query, page: 1 },
       this.fetchImages
@@ -45,19 +54,16 @@ class App extends Component {
 
   fetchImages = () => {
     const { searchQuery, page } = this.state;
-    const url = `https://pixabay.com/api/?key=${API_KEY}&q=${searchQuery}&page=${page}&per_page=${PER_PAGE}`;
-
     this.setState({ isLoading: true });
-
-    axios
-      .get(url)
-      .then(response => {
-        const newImages = response.data.hits.map(image => ({
+  
+  fetchGallery(searchQuery, page)
+      .then(data => {
+        const newImages = data.hits.map(image => ({
           id: image.id,
           webformatURL: image.webformatURL,
           largeImageURL: image.largeImageURL,
         }));
-
+  
         this.setState(prevState => ({
           images: [...prevState.images, ...newImages],
           isLoading: false,
@@ -93,27 +99,15 @@ class App extends Component {
 }
 
 App.propTypes = {
-  images: PropTypes.arrayOf(
+  initialImages: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       webformatURL: PropTypes.string.isRequired,
       largeImageURL: PropTypes.string.isRequired,
     })
   ).isRequired,
-
-  isLoading: PropTypes.bool.isRequired,
-
-  error: PropTypes.string,
-
-  selectedImage: PropTypes.string,
-
-  handleSearchSubmit: PropTypes.func.isRequired,
-
-  handleLoadMore: PropTypes.func.isRequired,
-
-  handleOpenModal: PropTypes.func.isRequired,
-
-  handleCloseModal: PropTypes.func.isRequired,
+  initialIsLoading: PropTypes.bool.isRequired,
+  initialError: PropTypes.string,
 };
 
 export default App;
