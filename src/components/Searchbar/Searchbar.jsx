@@ -45,6 +45,5 @@ class Searchbar extends React.Component {
 export default Searchbar;
 
 Searchbar.propTypes = {
-onSubmit:PropTypes.func.isRequired,
-
+  onSubmit: PropTypes.func.isRequired,
 };

@@ -3,29 +3,29 @@ import PropTypes from 'prop-types';
 
 class Modal extends Component {
   componentDidMount() {
-       window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
-      window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleOverlayClick = (event) => {
+  handleOverlayClick = event => {
     if (event.target === event.currentTarget) {
       this.props.onClose();
     }
   };
 
-  handleKeyDown = (event) => {
+  handleKeyDown = event => {
     if (event.keyCode === 27) {
       this.props.onClose();
     }
   };
 
   render() {
-    const { imageUrl, onClose } = this.props; 
+    const { imageUrl, onClose } = this.props;
     return (
-      <div className="overlay" onClick={this.handleOverlayClick}> 
+      <div className="overlay" onClick={this.handleOverlayClick}>
         <div className="modal">
           <button className="close-button" onClick={onClose}>
             &times;
@@ -43,5 +43,3 @@ Modal.propTypes = {
 };
 
 export default Modal;
-
-

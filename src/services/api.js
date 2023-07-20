@@ -8,4 +8,3 @@ export const fetchGallery = (searchQuery, page) => {
 
   return axios.get(url);
 };
-

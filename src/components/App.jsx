@@ -17,10 +17,6 @@ class App extends Component {
     selectedImage: null,
   };
 
-  // componentDidMount() {
-  //   this.fetchImages();
-  // }
-
   componentDidUpdate(_, prevState) {
     if (
       prevState.searchQuery !== this.state.searchQuery ||
