@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const Button = ({ onLoadMoreClick, hasImages }) => {
   const handleClick = () => {
@@ -17,4 +17,10 @@ const Button = ({ onLoadMoreClick, hasImages }) => {
   );
 };
 
+Button.propTypes = {
+  onLoadMoreClick: PropTypes.func.isRequired,
+  hasImages:PropTypes.bool.isRequired,
+};
+
 export default Button;
+

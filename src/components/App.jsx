@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {fetchGallery} from '../services/api'
+import { fetchGallery } from '../services/api';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
 import Modal from './Modal/Modal';
-
-
 
 class App extends Component {
   state = {
@@ -20,12 +18,12 @@ class App extends Component {
     selectedImage: null,
   };
 
-  componentDidMount() {
-     this.fetchImages();
-  }
+  // componentDidMount() {
+  //   this.fetchImages();
+  // }
 
   componentDidUpdate(_, prevState) {
-        if (prevState.searchQuery !== this.state.searchQuery || prevState.page !== this.state.page) {
+    if (prevState.searchQuery !== this.state.searchQuery || prevState.page !== this.state.page) {
       this.fetchImages();
     };
   };
@@ -33,7 +31,7 @@ class App extends Component {
   handleSearchSubmit = (query) => {
     this.setState(
       { images: [], searchQuery: query, page: 1 },
-      this.fetchImages
+      // this.fetchImages
     );
   };
 
@@ -55,15 +53,15 @@ class App extends Component {
   fetchImages = () => {
     const { searchQuery, page } = this.state;
     this.setState({ isLoading: true });
-  
-  fetchGallery(searchQuery, page)
-      .then(data => {
+
+    fetchGallery(searchQuery, page)
+      .then(({data}) => {
         const newImages = data.hits.map(image => ({
           id: image.id,
           webformatURL: image.webformatURL,
           largeImageURL: image.largeImageURL,
         }));
-  
+
         this.setState(prevState => ({
           images: [...prevState.images, ...newImages],
           isLoading: false,
