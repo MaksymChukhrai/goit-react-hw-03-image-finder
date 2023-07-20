@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { fetchGallery } from '../services/api';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -23,23 +22,20 @@ class App extends Component {
   // }
 
   componentDidUpdate(_, prevState) {
-    if (prevState.searchQuery !== this.state.searchQuery || prevState.page !== this.state.page) {
+    if (
+      prevState.searchQuery !== this.state.searchQuery ||
+      prevState.page !== this.state.page
+    ) {
       this.fetchImages();
-    };
-  };
+    }
+  }
 
-  handleSearchSubmit = (query) => {
-    this.setState(
-      { images: [], searchQuery: query, page: 1 },
-      // this.fetchImages
-    );
+  handleSearchSubmit = query => {
+    this.setState({ images: [], searchQuery: query, page: 1 });
   };
 
   handleLoadMore = () => {
-    this.setState(
-      prevState => ({ page: prevState.page + 1 }),
-      this.fetchImages
-    );
+    this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
   handleOpenModal = imageUrl => {
@@ -55,7 +51,7 @@ class App extends Component {
     this.setState({ isLoading: true });
 
     fetchGallery(searchQuery, page)
-      .then(({data}) => {
+      .then(({ data }) => {
         const newImages = data.hits.map(image => ({
           id: image.id,
           webformatURL: image.webformatURL,
@@ -95,17 +91,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  initialImages: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      webformatURL: PropTypes.string.isRequired,
-      largeImageURL: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  initialIsLoading: PropTypes.bool.isRequired,
-  initialError: PropTypes.string,
-};
 
 export default App;
